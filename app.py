@@ -1,7 +1,7 @@
 import streamlit as st
 from recommender import MusicRecommender
 
-# Page settings
+
 st.set_page_config(
     page_title="Music Recommendation System",
     page_icon="🎵",
