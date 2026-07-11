@@ -1,22 +1,43 @@
-# app.py
 import streamlit as st
-import librosa
-import numpy as np
-import pickle
+from recommender import MusicRecommender
 
-# Load trained model
-with open('music_mood_model.pkl', 'rb') as f:
-    model = pickle.load(f)
+# Page settings
+st.set_page_config(
+    page_title="Music Recommendation System",
+    page_icon="🎵",
+    layout="centered"
+)
 
-st.title("🎵 Music Mood Detection")
+st.title("🎵 AI Music Recommendation System")
 
-uploaded_file = st.file_uploader("Upload a .wav file", type=["wav"])
+st.write("Enter a song name to get similar song recommendations.")
 
-if uploaded_file is not None:
-    st.audio(uploaded_file, format='audio/wav')
-    
-    y, sr = librosa.load(uploaded_file, duration=30)
-    mfccs = np.mean(librosa.feature.mfcc(y=y, sr=sr, n_mfcc=40).T, axis=0)
-    prediction = model.predict([mfccs])
-    
-    st.success(f"Predicted Mood: {prediction[0].capitalize()}")
+
+@st.cache_resource
+def load_model():
+    return MusicRecommender("spotify_songs.csv")
+
+recommender = load_model()
+
+
+song_name = st.text_input("Enter Song Name")
+
+if st.button("Recommend Songs"):
+
+    if song_name.strip() == "":
+        st.warning("Please enter a song name.")
+
+    else:
+        recommendations = recommender.recommend(song_name)
+
+        if recommendations is None:
+            st.error("Song not found!")
+
+        else:
+            st.success("Top 5 Recommendations")
+
+            for i, song in enumerate(recommendations, start=1):
+                st.write(f"### {i}. {song['Song']}")
+                st.write(f"**Artist:** {song['Artist']}")
+                st.write(f"**Genre:** {song['Genre']}")
+                st.write("---")
