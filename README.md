@@ -1,4 +1,4 @@
-#  AI Music Recommendation System
+#   Music Recommendation System
 
 ## Overview
 
