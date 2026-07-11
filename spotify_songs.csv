@@ -1,0 +1,11 @@
+track_name,artists,track_genre,danceability,energy,loudness,speechiness,acousticness,instrumentalness,liveness,valence,tempo
+Believer,Imagine Dragons,pop,0.78,0.85,-4.2,0.08,0.05,0.00,0.11,0.70,125
+Thunder,Imagine Dragons,pop,0.76,0.82,-4.5,0.07,0.04,0.00,0.10,0.68,123
+Radioactive,Imagine Dragons,rock,0.72,0.79,-5.1,0.06,0.08,0.00,0.09,0.65,118
+Enemy,Imagine Dragons,pop,0.75,0.84,-4.3,0.07,0.03,0.00,0.12,0.71,121
+Warriors,Imagine Dragons,rock,0.70,0.88,-3.9,0.06,0.02,0.00,0.10,0.69,126
+Shape of You,Ed Sheeran,pop,0.83,0.65,-3.8,0.09,0.18,0.00,0.08,0.93,96
+Perfect,Ed Sheeran,pop,0.63,0.45,-6.2,0.03,0.35,0.00,0.09,0.47,95
+Blinding Lights,The Weeknd,pop,0.81,0.73,-5.9,0.06,0.04,0.00,0.09,0.34,171
+Levitating,Dua Lipa,pop,0.80,0.83,-3.2,0.05,0.06,0.00,0.07,0.91,103
+Someone Like You,Adele,pop,0.56,0.33,-7.1,0.03,0.61,0.00,0.10,0.28,67
