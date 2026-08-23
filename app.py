@@ -4,23 +4,26 @@ from recommender import MusicRecommender
 
 st.set_page_config(
     page_title="Music Recommendation System",
-    page_icon="🎵",
-    layout="centered"
+    page_icon="🎵"
 )
 
-st.title("🎵 AI Music Recommendation System")
+st.title("🎵 Music Recommendation System")
 
-st.write("Enter a song name to get similar song recommendations.")
+st.write(
+    "Enter a song"
+)
 
 
 @st.cache_resource
-def load_model():
+def load_recommender():
     return MusicRecommender("spotify_songs.csv")
 
-recommender = load_model()
+
+recommender = load_recommender()
 
 
 song_name = st.text_input("Enter Song Name")
+
 
 if st.button("Recommend Songs"):
 
@@ -36,8 +39,10 @@ if st.button("Recommend Songs"):
         else:
             st.success("Top 5 Recommendations")
 
-            for i, song in enumerate(recommendations, start=1):
+            for i, song in enumerate(recommendations, 1):
+
                 st.write(f"### {i}. {song['Song']}")
                 st.write(f"**Artist:** {song['Artist']}")
                 st.write(f"**Genre:** {song['Genre']}")
+                st.write(f"**Mood:** {song['Mood']}")
                 st.write("---")
